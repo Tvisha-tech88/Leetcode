@@ -1,19 +1,22 @@
 class Solution {
-    public int majorityElement(int[] nums) 
-    {
-        return max_freq(nums,nums[0],0);
-    }
-    public int max_freq(int[] arr, int val, int index)
-    {
+    public int majorityElement(int[] nums) {
+        
+        int candidate = 0;
         int count = 0;
-        for(int i = index;i<arr.length;i++){
-            if(arr[i]==val)
+
+        for (int num : nums) {
+            
+            if (count == 0) {
+                candidate = num;
+            }
+
+            if (num == candidate) {
                 count++;
-            else
+            } else {
                 count--;
-            if(count<0)
-                return max_freq(arr,arr[i],i);
+            }
         }
-        return val;
+
+        return candidate;
     }
 }
